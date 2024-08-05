@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Math Operations</title>
+    <script src="mathFacade.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const mathFacade = new MathFacade()
+
+        document.getElementById('calculate').addEventListener('click', () => {
+          const operation = document.getElementById('operation').value
+          const a = parseFloat(document.getElementById('a').value)
+          const b = parseFloat(document.getElementById('b').value)
+
+          try {
+            const result = mathFacade.performOperation(operation, a, b)
+            document.getElementById('result').innerText = `Result: ${result}`
+          } catch (e) {
+            document.getElementById('result').innerText = `Error: ${e.message}`
+          }
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <h1>Math Operations</h1>
+    <label for="operation">Operation:</label>
+    <input
+      type="text"
+      id="operation"
+      placeholder="add, subtract, multiply, divide"
+    /><br />
+    <label for="a">First Number:</label>
+    <input type="number" id="a" /><br />
+    <label for="b">Second Number:</label>
+    <input type="number" id="b" /><br />
+    <button id="calculate">Calculate</button>
+    <p id="result"></p>
+  </body>
+</html>
